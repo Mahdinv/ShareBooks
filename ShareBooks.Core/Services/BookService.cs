@@ -46,7 +46,7 @@ namespace ShareBooks.Core.Services
                     imgBookUp.CopyTo(stream);
                 }
 
-                #region Save Thumbnail Course Image
+                #region Save Thumbnail Book Image
 
                 string thumbPath = Path.Combine(_environment.WebRootPath, "book/thumbnail", book.BookImageName);
                 ImageConvertors imgResizer = new ImageConvertors();
@@ -119,7 +119,7 @@ namespace ShareBooks.Core.Services
             {
                 string imagePath = "";
 
-                #region Remove Old Course Images
+                #region Remove Old Book Images
 
                 if (publisher.PublisherImageName != "no-photo.png")
                 {
@@ -128,7 +128,7 @@ namespace ShareBooks.Core.Services
                     {
                         File.Delete(imagePath);
                     }
-                    //------Delete Thumb Course Image ------//
+                    //------Delete Thumb Book Image ------//
                     string deleteThumbPath = Path.Combine(_environment.WebRootPath, "images/publisher", publisher.PublisherImageName);
                     if (File.Exists(deleteThumbPath))
                     {
@@ -138,7 +138,7 @@ namespace ShareBooks.Core.Services
 
                 #endregion
 
-                #region Add New Course Image
+                #region Add New Book Image
 
                 publisher.PublisherImageName = CodeGenerator.ActiveCode() + Path.GetExtension(imgPublisher.FileName);
                 imagePath = Path.Combine(_environment.WebRootPath, "images/publisher", publisher.PublisherImageName);
@@ -273,7 +273,7 @@ namespace ShareBooks.Core.Services
             {
                 string imagePath = "";
 
-                #region Remove Old Course Images
+                #region Remove Old Book Images
 
                 if (book.BookImageName != "no-photo.png")
                 {
@@ -282,7 +282,7 @@ namespace ShareBooks.Core.Services
                     {
                         File.Delete(imagePath);
                     }
-                    //------Delete Thumb Course Image ------//
+                    //------Delete Thumb Book Image ------//
                     string deleteThumbPath = Path.Combine(_environment.WebRootPath, "book/thumbnail", book.BookImageName);
                     if (File.Exists(deleteThumbPath))
                     {
@@ -292,7 +292,7 @@ namespace ShareBooks.Core.Services
 
                 #endregion
 
-                #region Add New Course Image
+                #region Add New Book Image
 
                 book.BookImageName = CodeGenerator.ActiveCode() + Path.GetExtension(imgBook.FileName);
                 imagePath = Path.Combine(_environment.WebRootPath, "book/images", book.BookImageName);
