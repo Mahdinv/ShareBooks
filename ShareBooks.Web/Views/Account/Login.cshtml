@@ -1,0 +1,98 @@
+﻿@model ShareBooks.Core.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "ورود به سایت";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<div class="section-headline-wrap">
+    <div class="section-headline">
+        <h2> ورود به سایت</h2>
+        <p><a href="/">صفحه اصلی</a><span class="separator">/</span><span class="current-section">ورود به سایت</span></p>
+    </div>
+</div>
+
+<div class="section-wrap">
+    <div class="section demo">
+
+        <div class="form-popup ">
+
+            <!-- FORM POPUP HEADLINE -->
+            <div class="form-popup-headline primary">
+                <h2>ورود به سایت</h2>
+
+            </div>
+
+
+            @if (ViewBag.IsSuccess != null)
+            {
+                <script>
+                    swal("موفق", "ورود با موفقیت انجام شد", "success");
+
+                    // Your delay in milliseconds
+                    var delay = 3000;
+                    setTimeout(function () { window.location = "https://localhost:44377/"; }, delay);
+                </script>
+
+            }
+
+            @if (ViewBag.EditProfile == true)
+            {
+                <script>
+                    swal("اطلاعات کاربری با موفقیت به روز رسانی شد", "جهت بارگذارذی اطلاعات پروفایل دوباره لاگین کنید", "success");
+
+                </script>
+            }
+
+            @if (ViewBag.Permission == false)
+            {
+                <script>
+                    swal("خطا دسترسی !", "شما مجوز دسترسی به این قسمت  را ندارید", "error");
+
+                </script>
+            }
+
+            <div class="form-popup-content">
+                <form asp-action="Login" method="post">
+
+                    <label>ایمیل</label>
+                    <input type="text" asp-for="Email" placeholder="ایمیل خود را وارد کنید">
+                    <span asp-validation-for="Email"></span>
+
+                    <label>کلمه عبور</label>
+                    <input type="text" asp-for="Password" placeholder="کلمه عبور خود را وارد کنید">
+                    <span asp-validation-for="Password"></span>
+
+                    <label></label>
+                    <input type="checkbox" asp-for="RememberMe" checked="" />
+                    <label for="RememberMe" class="label-check">
+                        <span class="checkbox primary primary"><span></span></span>
+                        مرا به خاطر بسپار
+                    </label>
+
+                    <p>رمزتان را گم کرده‌اید؟ <a href="/ForgotPassword" class="primary">اینجا کلیک کنید</a></p>
+                    <br />
+                    <input type="submit" class="button mid secondary-dark" value="ورود به سایت" />
+
+
+                </form>
+            </div>
+            <!-- /FORM POPUP CONTENT -->
+        </div>
+
+
+
+
+
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
+
+
+
+

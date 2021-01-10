@@ -1,0 +1,46 @@
+﻿@model ShareBooks.Core.ViewModels.ActivateViewModel
+
+@{
+    ViewData["Title"] = "فعالسازی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-headline-wrap">
+    <div class="section-headline">
+        <h2> ثبت نام</h2>
+        <p><a href="/">صفحه اصلی</a><span class="separator">/</span><span class="current-section">ثبت نام</span></p>
+    </div>
+</div>
+<div class="section-wrap">
+    <div class="section demo">
+
+        <div class="form-popup ">
+
+            <!-- FORM POPUP HEADLINE -->
+            <div class="form-popup-headline primary">
+                <h2>فرم ثبت نام را کامل کنید</h2>
+
+            </div>
+            <!-- /FORM POPUP HEADLINE -->
+            <!-- FORM POPUP CONTENT -->
+            <div class="form-popup-content">
+                <form asp-action="Activate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>کد فعالسازی</label>
+                        <input type="text" asp-for="ActiveCode" placeholder="لطفا کد فعالسازی را وارد نمایید" />
+                        <span asp-validation-for="ActiveCode"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="فعالسازی" class="button mid dark" />
+                    </div>
+                </form>
+            </div>
+            <!-- /FORM POPUP CONTENT -->
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+

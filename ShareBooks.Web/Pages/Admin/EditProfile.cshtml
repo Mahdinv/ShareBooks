@@ -1,0 +1,105 @@
+﻿@page
+@model ShareBooks.Web.Pages.Admin.EditProfileModel
+@{
+    ViewData["Title"] = "ویرایش اطلاعات کاربری";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                ویرایش اطلاعات کاربری
+
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <form method="post" asp-page="EditProfile" enctype="multipart/form-data" class="form-horizontal form-label-left">
+                <input type="hidden" asp-for="EditProfileViewModel.AvatarName" />
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">ایمیل : </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input asp-for="EditProfileViewModel.Email" type="text" class="form-control" disabled="disabled">
+                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        نام :
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input asp-for="EditProfileViewModel.FirstName" required="" class="form-control col-md-7 col-xs-12  " placeholder="لطفا نام را وارد کنید" type="text">
+                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+
+                        <span class="text-danger" asp-validation-for="EditProfileViewModel.FirstName"></span>
+                    </div>
+
+
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        نام خانوادگی :
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input asp-for="EditProfileViewModel.LastName" required="" class="form-control col-md-7 col-xs-12" placeholder="لطفا نلم خانوادگی را وارد کنید" type="text">
+                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        <span class="text-danger"></span>
+
+                        <span class="text-danger" asp-validation-for="EditProfileViewModel.LastName"></span>
+                    </div>
+
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        شماره موبایل :
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input asp-for="EditProfileViewModel.Mobile" required="" class="form-control col-md-7 col-xs-12" placeholder="لطفا شماره موبایل را وارد کنید" type="text">
+                        <span class="fa fa-mobile form-control-feedback left" aria-hidden="true"></span>
+
+                        <span class="text-danger" asp-validation-for="EditProfileViewModel.Mobile"></span>
+                    </div>
+
+                </div>
+                <hr />
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label>انتخاب تصویر کاربر : </label>
+                        <input type="file" asp-for="EditProfileViewModel.UserAvatar" />
+                        <br />
+                        <img src="/UserAvatar/@Model.EditProfileViewModel.AvatarName" class="img-circle" height="120" />
+
+
+                    </div>
+
+                </div>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                        <button type="submit" class="btn btn-success">ذخیره</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+

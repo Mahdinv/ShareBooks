@@ -1,0 +1,50 @@
+﻿@page "{id}"
+@model ShareBooks.Web.Pages.Admin.Roles.DeleteRoleModel
+@{
+    ViewData["Title"] = "حذف نقش";
+}
+
+<form method="post">
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <input type="hidden" asp-for="Role.RoleId" />
+        <input type="hidden" asp-for="Role.RoleTitle" />
+        <input type="hidden" asp-for="Role.RoleName" />
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    حذف نقش
+
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+
+                    <div class="alert alert-danger ">
+                        <p>آیا میخواهید نقش " @Model.Role.RoleTitle " را حذف نمایید ؟</p>
+                    </div>
+
+
+                    <hr class="col-md-12" />
+                    <div class="item form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5">
+
+                            <input type="submit" class="btn btn-danger" value="حذف" />
+                            <a asp-page="Index" class="btn btn-info">انصراف</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+

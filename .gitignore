@@ -1,0 +1,7 @@
+.vs
+ShareBooks.Core/bin
+ShareBooks.Core/obj
+ShareBooks.DataLayer/bin
+ShareBooks.DataLayer/obj
+ShareBooks.Web/bin
+ShareBooks.Web/obj

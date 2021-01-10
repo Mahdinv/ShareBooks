@@ -1,0 +1,284 @@
+﻿@page
+@model ShareBooks.Web.Pages.Admin.Books.CreateBookModel
+@{
+    ViewData["Title"] = "افزودن کتاب";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Book.BookFileName" value="DefaultFile" />
+    <div class="col-md-8 col-sm-8 col-xs-8">
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    افزودن کتاب جدید
+
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+
+                    <div class="item form-group">
+                        <label asp-for="Book.BookFaTitle" class="control-label col-md-7 ">
+                        </label>
+                        <div class="col-md-12">
+                            <input asp-for="Book.BookFaTitle" class="form-control  " placeholder="عنوان فارسی کتاب را وارد نمایید" type="text">
+                            <span asp-validation-for="Book.BookFaTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.BookLatinTitle" class="control-label col-md-7  ">
+                        </label>
+                        <div class="col-md-12">
+                            <input asp-for="Book.BookLatinTitle" class="form-control  " placeholder="عنوان لاتین کتاب را وارد نمایید" type="text">
+                            <span asp-validation-for="Book.BookLatinTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.BookDescription" class="control-label col-md-7  ">
+                        </label>
+                        <div class="col-md-12">
+                            <textarea asp-for="Book.BookDescription"></textarea>
+                            <span asp-validation-for="Book.BookDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.Writer" class="control-label col-md-7  ">
+                        </label>
+                        <div class="col-md-12">
+                            <input class="form-control" asp-for="Book.Writer" placeholder="لطفا نام نویسنده را وارد نمایید" />
+                            <span asp-validation-for="Book.Writer" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.TranslatorName" class="control-label col-md-7  ">
+                        </label>
+                        <div class="col-md-12">
+                            <input class="form-control" asp-for="Book.TranslatorName" placeholder="لطفا نام مترجم را وارد نمایید" />
+                            <span asp-validation-for="Book.TranslatorName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.PageNumber" class="control-label col-md-7  ">
+                        </label>
+                        <div class="col-md-12">
+                            <input class="form-control" asp-for="Book.PageNumber" placeholder="لطفا تعداد صفحات را وارد نمایید" />
+                            <span asp-validation-for="Book.PageNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            سطح کتاب
+                        </label>
+                        <div class="col-md-7">
+                            <select asp-for="Book.LevelId" asp-items="@(ViewData["Levels"] as SelectList)" class="form-control"></select>
+                            <span asp-validation-for="Book.LevelId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            ناشر
+                        </label>
+                        <div class="col-md-7">
+                            <select asp-for="Book.PublisherId" asp-items="@(ViewData["Publishers"] as SelectList)" class="form-control"></select>
+                            <span asp-validation-for="Book.PublisherId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.Volume" class="control-label col-md-7 ">
+
+                        </label>
+                        <div class="col-md-7">
+                            <input required="" asp-for="Book.Volume" class="form-control  " placeholder="عنوان حجم کتاب را وارد نمایید (مگابایت)">
+                            <span asp-validation-for="Book.Volume" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="item form-group">
+                        <label asp-for="Book.Language" class="control-label col-md-7 ">
+                        </label>
+                        <div class="col-md-7">
+                            <input required="" asp-for="Book.Language" class="form-control  " placeholder=" زبان کتاب را وارد نمایید" type="text">
+                            <span asp-validation-for="Book.Language" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.CountFiles" class="control-label col-md-7 ">
+                        </label>
+                        <div class="col-md-7">
+                            <input required="" asp-for="Book.CountFiles" class="form-control  " placeholder=" تعداد فایلهای کتاب را وارد نمایید">
+                            <span asp-validation-for="Book.CountFiles" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.Tags" class="control-label col-md-7 ">
+                        </label>
+                        <div class="col-md-7">
+                            <input asp-for="Book.Tags" class="form-control  " placeholder="کلمات کلیدی را با - از هم جدا کنید" type="text">
+                            <span asp-validation-for="Book.Tags" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <hr class="col-md-12" />
+                    <div class="item form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5">
+
+                            <input type="submit" class="btn btn-success" value="ثبت" />
+                            <a asp-page="Index" class="btn btn-warning">انصراف</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2></h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+                <div class="row">
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7 ">
+                            انتخاب تصویر کتاب
+                        </label>
+                        <img id="imgBook" src="/Book/images/no-photo.png" class="img-thumbnail" />
+                        <input name="imgBookUp" id="img_BookUp" type="file" />
+                        <hr />
+                    </div>
+
+                    <div class="item form-group">
+                        <label asp-for="Book.BookFileName" class="control-label col-md-7 ">
+
+                        </label>
+
+                        <input type="file" name="bookFile" class="form-control" />
+                        <p></p>
+                        <span class="text-danger">انتخاب فایل کتاب اجباری است</span>
+                        <hr />
+
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            انتخاب گروه اصلی
+                        </label>
+                        <div class="col-md-12">
+                            <select asp-for="Book.GroupId" asp-items="@(ViewData["Groups"] as SelectList)" class="form-control"></select>
+                            <span asp-validation-for="Book.GroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            انتخاب زیر گروه اول
+                        </label>
+                        <div class="col-md-12">
+                            <select asp-for="Book.SubGroupId" asp-items="@(ViewData["SubGroups"] as SelectList)" class="form-control"></select>
+                            <span asp-validation-for="Book.SubGroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            انتخاب زیر گروه دوم
+                        </label>
+                        <div class="col-md-12">
+                            <select asp-for="Book.SecondSubGroupId" asp-items="@(ViewData["SecondSubGroups"] as SelectList)" class="form-control"></select>
+                            <hr />
+                            <span asp-validation-for="Book.SecondSubGroupId" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    <script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+
+
+    <script>
+        CKEDITOR.replace('Book.BookDescription', {
+            customConfig: '/js/Config.js'
+        });
+    </script>
+
+    <script>
+        $("#Book_GroupId").change(function () {
+            $("#Book_SubGroupId").empty();
+            $.getJSON("/home/GetSubGroups/" + $("#Book_GroupId :selected").val(),
+                function (data) {
+                    $.each(data,
+                        function () {
+                            $("#Book_SubGroupId")
+                                .append('<option value=' + this.value + '>' + this.text + '</option>');
+                        });
+                });
+        });
+
+
+        $("#Book_SubGroupId").change(function () {
+            $("#Book_SecondSubGroupId").empty();
+            $.getJSON("/home/GetSecondSubGroups/" + $("#Book_SubGroupId :selected").val(),
+                function (data) {
+                    $.each(data,
+                        function () {
+                            $("#Book_SecondSubGroupId")
+                                .append('<option value=' + this.value + '>' + this.text + '</option>');
+                        });
+                });
+        });
+    </script>
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgBook').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#img_BookUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}
+

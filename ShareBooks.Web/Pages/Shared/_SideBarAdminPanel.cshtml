@@ -1,0 +1,61 @@
+﻿<br />
+
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+        <ul class="nav side-menu">
+            <li>
+                <a href="/Admin/Index"><i class="fa fa-home"></i>داشبورد</a>
+            </li>
+            <li>
+                <a><i class="fa fa-info-circle"></i>اطلاعات پروفایل<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/Profile/">مشاهده پروفایل</a></li>
+                    <li><a href="/Admin/EditProfile">ویرایش پروفایل</a></li>
+                    <li><a href="/Admin/ChangePassword">ویرایش کلمه‌عبور</a></li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-user"></i> مدیریت کاربران <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/Users/">جدول کاربران</a></li>
+                    <li><a href="/Admin/Users/ListDeleteUsers">لیست کاربران حذف شده</a></li>
+                    <li><a href="/Admin/Roles/">مدیریت نقش‌ها</a></li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-group"></i> مدیریت دسته‌بندی <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/BookGroups/">جدول دسته‌بندی‌ها</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/Admin/Publishers/"><i class="fa fa-newspaper-o"></i>‌جدول ناشران</a>
+            </li>
+            <li>
+                <a><i class="fa fa-book"></i> مدیریت ‌کتب <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/Books/">جدول ‌‌کتاب‌ها</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<!-- /sidebar menu -->
+<!-- /menu footer buttons -->
+<div class="sidebar-footer hidden-small">
+    <a data-toggle="tooltip" data-placement="top" title="تنظیمات">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    </a>
+    <a data-toggle="tooltip" data-placement="top" title="تمام صفحه" onclick="toggleFullScreen();">
+        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+    </a>
+    <a data-toggle="tooltip" data-placement="top" title="قفل" class="lock_btn">
+        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+    </a>
+    <a data-toggle="tooltip" data-placement="top" title="خروج" href="login.html">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+    </a>
+</div>
+<!-- /menu footer buttons -->

@@ -1,0 +1,67 @@
+﻿@page "{id?}"
+@model ShareBooks.Web.Pages.Admin.BookGroups.CreateGroupModel
+@{
+    ViewData["Title"] = "افزودن گروه جدید";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="BookGroup.ParentId" />
+    <div class="col-md-12 col-sm-8 col-xs-8">
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    افزودن گروه جدید
+
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            عنوان گروه
+                        </label>
+                        <div class="col-md-8">
+                            <input asp-for="BookGroup.GroupTitle" required="" class="form-control  " placeholder="عنوان گروه را وارد نمایید" type="text">
+
+                            <span asp-validation-for="BookGroup.GroupTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            توضیحات
+                        </label>
+                        <div class="col-md-8">
+                            <input asp-for="BookGroup.Description" required="" class="form-control  " placeholder="توضیحات گروه را وارد نمایید" type="text">
+
+                            <span asp-validation-for="BookGroup.Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <hr class="col-md-12" />
+                    <div class="item form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5">
+
+                            <input type="submit" class="btn btn-success" value="ثبت" />
+                            <a asp-page="Index" class="btn btn-warning">انصراف</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+

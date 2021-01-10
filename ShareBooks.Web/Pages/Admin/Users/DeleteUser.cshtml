@@ -1,0 +1,39 @@
+﻿@page "{id}"
+@model ShareBooks.Web.Pages.Admin.Users.DeleteUserModel
+@{
+    ViewData["Title"] = "حذف کاربر";
+}
+
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                حذف کاربر
+
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="alert alert-danger rounded text-danger">
+                آیا میخواهید این کاربر را حذف نمایید ؟
+            </div>
+            <form method="post">
+                <input type="hidden" name="UserId" value="@ViewData["UserId"]" />
+
+                <p> نام و نام خانوادگی : @(Model.InformationUserViewModel.FirstName + " " + Model.InformationUserViewModel.LastName)</p>
+                <p> شماره موبایل : @Model.InformationUserViewModel.Mobile</p>
+                <p>ایمیل : @Model.InformationUserViewModel.Email</p>
+                <p><img class="img-circle" height="100" src="/UserAvatar/@Model.InformationUserViewModel.UserAvatar" /></p>
+                <input type="submit" class="btn btn-danger btn-round" value="حذف" />
+                <a asp-page="Index" class="btn btn-info btn-round">انصراف</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model ShareBooks.DataLayer.Entities.Users.User
+
+<br />
+
+<div class="alert alert-success text-center">
+    <p>
+        @(Model.FirstName + " " + Model.LastName) عزیز !
+        <br />
+        ثبت نام شما با موفقیت انجام شد ، کد فعالسازی به شماره موبایل
+        <span>
+            "@Model.Mobile"
+        </span>
+        ارسال شد
+        <br />
+        جهت ادامه ثبت نام ، 
+        <a asp-controller="Account" asp-action="Activate">به لینک فوق</a>
+        مراجعه کنید.
+    </p>
+</div>

@@ -1,0 +1,111 @@
+﻿@page
+@using ShareBooks.DataLayer.Entities.Permissions
+@model ShareBooks.Web.Pages.Admin.Roles.CreateRoleModel
+@{
+    ViewData["Title"] = "افزودن نقش";
+
+    List<Permission> permissions = ViewData["Permissions"] as List<Permission>;
+}
+
+<form method="post">
+    <div class="col-md-8 col-sm-8 col-xs-8">
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    افزودن نقش جدید
+
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            عنوان نقش :
+                        </label>
+                        <div class="col-md-8">
+                            <input asp-for="Role.RoleTitle" required="" class="form-control  " placeholder="عنوان نقش را وارد نمایید" type="text">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            <span asp-validation-for="Role.RoleTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-7  ">
+                            نام نقش :
+                        </label>
+                        <div class="col-md-8">
+                            <input asp-for="Role.RoleName" required="" class="form-control  " placeholder="نام نقش را وارد نمایید" type="text">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            <span asp-validation-for="Role.RoleName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <hr class="col-md-12" />
+                    <div class="item form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5">
+
+                            <input type="submit" class="btn btn-success" value="ثبت" />
+                            <a asp-page="Index" class="btn btn-warning">انصراف</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    دسترسی های نقش
+
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+                <ul>
+                    @foreach (var permission in permissions.Where(p => p.ParentId == null))
+                    {
+                        <li>
+                            <input type="checkbox" name="selectedPermission" value="@permission.PermissionId" /> @permission.PermissionTitle
+                            @if (permissions.Any(p => p.ParentId == permission.PermissionId))
+                            {
+                                <ul>
+                                    @foreach (var sub in permissions.Where(p => p.ParentId == permission.PermissionId))
+                                    {
+                                        <li>
+                                            <input type="checkbox" name="selectedPermission" value="@sub.PermissionId" /> @sub.PermissionTitle
+                                            @if (permissions.Any(p => p.ParentId == sub.PermissionId))
+                                            {
+                                                <ul>
+                                                    @foreach (var sub2 in permissions.Where(p => p.ParentId == sub.PermissionId))
+                                                    {
+                                                        <li>
+                                                            <input type="checkbox" name="selectedPermission" value="@sub2.PermissionId" /> @sub2.PermissionTitle
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</form>
+
