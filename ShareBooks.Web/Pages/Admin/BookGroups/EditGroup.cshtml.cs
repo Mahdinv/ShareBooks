@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ShareBooks.Core.Security;
 using ShareBooks.Core.Services.Interfaces;
 using ShareBooks.DataLayer.Entities.Books;
 
 namespace ShareBooks.Web.Pages.Admin.BookGroups
 {
+    [PermissionChecker(16)]
     public class EditGroupModel : PageModel
     {
         private IBookService _bookService;

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShareBooks.Core.Convertors;
+using ShareBooks.Core.Security;
 using ShareBooks.Core.Services.Interfaces;
 using ShareBooks.Core.ViewModels;
 
 namespace ShareBooks.Web.Pages.Admin.Users
 {
+    [PermissionChecker(2)]
     public class CreateUserModel : PageModel
     {
         private IUserService _userService;

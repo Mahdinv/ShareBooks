@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ShareBooks.Core.Security;
 using ShareBooks.Core.Services.Interfaces;
 using ShareBooks.DataLayer.Entities.Books;
 
 namespace ShareBooks.Web.Pages.Admin.Books
 {
+    [PermissionChecker(19)]
     public class EditBookModel : PageModel
     {
         private IBookService _bookService;

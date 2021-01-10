@@ -1,0 +1,34 @@
+﻿@using ShareBooks.Core.Security
+@using ShareBooks.Core.Services.Interfaces
+@using ShareBooks.Core.ViewModels
+@inject IUserService UserService
+@inject IPermissionService _PermissionService
+@{
+    SideBarAdminPanelViewModel user = UserService.GetSideBarAdminPanelData(User.Identity.GetEmail());
+}
+
+<div class="top_nav hidden-print">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="/UserAvatar/@user.AvatarName" alt="">@(user.FirstName + " " + user.LastName)
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a asp-controller="Home" asp-action="Index">صفحه اصلی سایت</a></li>
+                        <li><a href="/Logout"><i class="fa fa-sign-out pull-right"></i> خروج</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
+

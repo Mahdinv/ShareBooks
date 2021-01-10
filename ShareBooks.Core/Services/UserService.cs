@@ -223,6 +223,16 @@ namespace ShareBooks.Core.Services
             return _context.Settings.FirstOrDefault();
         }
 
+        public SideBarAdminPanelViewModel GetSideBarAdminPanelData(string email)
+        {
+            return _context.Users.Where(u => u.Email == email).Select(u => new SideBarAdminPanelViewModel()
+            {
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                AvatarName = u.UserAvatar
+            }).Single();
+        }
+
         public User GetUserByActiveCode(string activeCode)
         {
             return _context.Users.SingleOrDefault(u => u.ActiveCode == activeCode);

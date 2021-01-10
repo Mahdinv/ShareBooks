@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ShareBooks.Core.Security;
 using ShareBooks.Core.Services.Interfaces;
 using ShareBooks.DataLayer.Entities.Users;
 
 namespace ShareBooks.Web.Pages.Admin.Roles
 {
+    [PermissionChecker(8)]
     public class EditRoleModel : PageModel
     {
         private IPermissionService _permissionService;

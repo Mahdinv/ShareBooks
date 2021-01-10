@@ -1,4 +1,7 @@
-﻿
+﻿@using ShareBooks.Core.Security
+@using ShareBooks.Core.Services.Interfaces
+@inject IPermissionService PermissionService
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,291 +51,39 @@
             <div class="user-board">
                 <!-- USER QUICKVIEW -->
                 <div class="user-quickview">
-                    <!-- USER AVATAR -->
-                    <a href="author-profile.html">
+                    @if (User.Identity.IsAuthenticated)
+                    {<!-- USER AVATAR -->
+
+
                         <div class="outer-ring">
                             <div class="inner-ring"></div>
                             <figure class="user-avatar">
-                                <img src="images/avatars/avatar_01.jpg" alt="avatar">
+                                <img src="/images/avatars/avatar_01.jpg" alt="avatar">
                             </figure>
-                        </div>
-                    </a>
-                    <!-- /USER AVATAR -->
-                    <!-- USER INFORMATION -->
-                    <p class="user-name">جانی فیشر</p>
-                    <!-- SVG ARROW -->
-                    <svg class="svg-arrow">
-                        <use xlink:href="#svg-arrow"></use>
-                    </svg>
-                    <!-- /SVG ARROW -->
-                    <p class="user-money">تومان745.00</p>
-                    <!-- /USER INFORMATION -->
-                    <!-- DROPDOWN -->
-                    <ul class="dropdown small hover-effect closed">
-                        <li class="dropdown-item">
-                            <div class="dropdown-triangle"></div>
-                            <a href="author-profile.html">صفحه پروفایل</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-settings.html">تنظیمات حساب</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-purchases.html">خریدهای شما</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-statement.html">پیش پرداخت</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-buycredits.html">اعتبار خرید</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-withdrawals.html">برداشت</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-uploaditem.html">آپلود</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="dashboard-manageitems.html">مدیریت</a>
-                        </li>
-                    </ul>
-                    <!-- /DROPDOWN -->
-                </div>
-                <!-- /USER QUICKVIEW -->
-                <!-- ACCOUNT INFORMATION -->
-                <div class="account-information">
-                    <a href="favourites.html">
-                        <div class="account-wishlist-quickview">
-                            <span class="icon-heart"></span>
-                        </div>
-                    </a>
-                    <div class="account-cart-quickview">
-                        <span class="icon-present">
-                            <!-- SVG ARROW -->
-                            <svg class="svg-arrow">
-                                <use xlink:href="#svg-arrow"></use>
-                            </svg>
-                            <!-- /SVG ARROW -->
-                        </span>
+                        </div> <!-- /USER AVATAR --> <!-- USER INFORMATION -->
+                        <p class="user-name">@User.Identity.Name ، خوش آمدید</p>
+                        <svg class="svg-arrow">
+                            <use xlink:href="#svg-arrow"></use>
+                        </svg> <!-- /USER INFORMATION --> <!-- DROPDOWN -->
+                        <ul class="dropdown small hover-effect closed">
+                            @if (PermissionService.CheckUserIsRole(User.Identity.GetEmail()))
+                            {
+                                <li class="dropdown-item">
+                                    <a href="/Admin/">پنل مدیریت</a>
+                                </li>
+                            }
+                            <li class="dropdown-item">
+                                <a class=" btn-outline-danger-danger" href="/Logout">خروج</a>
+                            </li>
 
-                        <!-- PIN -->
-                        <span class="pin soft-edged secondary">7</span>
-                        <!-- /PIN -->
-                        <!-- DROPDOWN CART -->
-                        <ul class="dropdown cart closed">
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="item-v1.html" class="link-to"></a>
-                                <!-- SVG PLUS -->
-                                <svg class="svg-plus">
-                                    <use xlink:href="#svg-plus"></use>
-                                </svg>
-                                <!-- /SVG PLUS -->
-                                <div class="dropdown-triangle"></div>
-                                <figure class="product-preview-image tiny">
-                                    <img src="images/items/pixel_s.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny">فروشگاه بازی پیکسل الماس</p>
-                                <p class="category tiny primary">سایت کودک</p>
-                                <p class="price tiny"><span>تومان</span>86</p>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="item-v1.html" class="link-to"></a>
-                                <!-- SVG PLUS -->
-                                <svg class="svg-plus">
-                                    <use xlink:href="#svg-plus"></use>
-                                </svg>
-                                <!-- /SVG PLUS -->
-                                <figure class="product-preview-image tiny">
-                                    <img src="images/items/monsters_s.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny">هیولاهای کوچک - 40 بسته با نشان دکمه</p>
-                                <p class="category tiny primary">طراحی</p>
-                                <p class="price tiny"><span>تومان</span>10</p>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="item-v1.html" class="link-to"></a>
-                                <!-- SVG PLUS -->
-                                <svg class="svg-plus">
-                                    <use xlink:href="#svg-plus"></use>
-                                </svg>
-                                <!-- /SVG PLUS -->
-                                <figure class="product-preview-image tiny">
-                                    <img src="images/items/flat_s.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny">مسطح - تصویر قهرمان آهنگ ساز</p>
-                                <p class="category tiny primary">سایت کودک</p>
-                                <p class="price tiny"><span>تومان</span>12</p>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <p class="text-header tiny">جمع</p>
-                                <p class="price"><span>تومان</span>108.00</p>
-                                <a href="cart.html" class="button primary half">سبد خرید</a>
-                                <a href="checkout.html" class="button secondary half">پرداخت</a>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                        </ul>
-                        <!-- /DROPDOWN CART -->
-                    </div>
-                    <div class="account-email-quickview">
-                        <span class="icon-envelope">
-                            <!-- SVG ARROW -->
-                            <svg class="svg-arrow">
-                                <use xlink:href="#svg-arrow"></use>
-                            </svg>
-                            <!-- /SVG ARROW -->
-                        </span>
-
-                        <!-- PIN -->
-                        <span class="pin soft-edged secondary">!</span>
-                        <!-- /PIN -->
-                        <!-- DROPDOWN NOTIFICATIONS -->
-                        <ul class="dropdown notifications closed">
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <div class="dropdown-triangle"></div>
-                                <a href="dashboard-openmessage.html" class="link-to"></a>
-                                <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_06.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny"><span>سارا</span></p>
-                                <p class="subject">سوال درباره محصولات</p>
-                                <p class="timestamp">May 18th, 2014</p>
-                                <span class="notification-type secondary-new icon-envelope"></span>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="dashboard-openmessage.html" class="link-to"></a>
-                                <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_04.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny"><span>گرافیک تندر سرخ</span></p>
-                                <p class="subject">استعلام پشتیبانی</p>
-                                <p class="timestamp">May 5th, 2014</p>
-                                <span class="notification-type icon-envelope-open"></span>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="dashboard-openmessage.html" class="link-to"></a>
-                                <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_07.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny"><span>تم های پیچیده</span></p>
-                                <p class="subject">همکاری</p>
-                                <p class="timestamp">Feb 24th, 2014</p>
-                                <span class="notification-type secondary-new icon-envelope"></span>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="dashboard-openmessage.html" class="link-to"></a>
-                                <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_08.jpg" alt="">
-                                </figure>
-                                <p class="text-header tiny"><span>قالب GregSpiegel1820  </span></p>
-                                <p class="subject">چگونگی نصب قالب</p>
-                                <p class="timestamp">Jan 3rd, 2014</p>
-                                <span class="notification-type icon-action-undo"></span>
-                                <a href="dashboard-inbox.html" class="button secondary">نمایش همه پیامها</a>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                        </ul>
-                        <!-- /DROPDOWN NOTIFICATIONS -->
-                    </div>
-                    <div class="account-settings-quickview">
-                        <span class="icon-settings">
-                            <!-- SVG ARROW -->
-                            <svg class="svg-arrow">
-                                <use xlink:href="#svg-arrow"></use>
-                            </svg>
-                            <!-- /SVG ARROW -->
-                        </span>
-
-                        <!-- PIN -->
-                        <span class="pin soft-edged primary">49</span>
-                        <!-- /PIN -->
-                        <!-- DROPDOWN NOTIFICATIONS -->
-                        <ul class="dropdown notifications no-hover closed">
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <div class="dropdown-triangle"></div>
-                                <a href="author-profile.html">
-                                    <figure class="user-avatar">
-                                        <img src="images/avatars/avatar_02.jpg" alt="">
-                                    </figure>
-                                </a>
-                                <p class="title">
-                                    <a href="author-profile.html"><span>مگان V.</span></a> اضافه
-                                    <a href="item-v1.html"><span>فروشگاه بازی پیکسل الماس</span></a> برگزیده
-                                </p>
-                                <p class="timestamp">2 ساعت قبل</p>
-                                <span class="notification-type primary-new icon-heart"></span>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="author-profile.html">
-                                    <figure class="user-avatar">
-                                        <img src="images/avatars/avatar_03.jpg" alt="">
-                                    </figure>
-                                </a>
-                                <p class="title">
-                                    <a href="author-profile.html"><span>توماس کیت</span></a> نوشته توسط شما
-                                    <a href="author-reputation.html"><span>شهرت نویسنده</span></a>
-                                </p>
-                                <p class="timestamp">17 ساعت قبل</p>
-                                <span class="notification-type icon-star"></span>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="author-profile.html">
-                                    <figure class="user-avatar">
-                                        <img src="images/avatars/avatar_04.jpg" alt="">
-                                    </figure>
-                                </a>
-                                <p class="title">
-                                    <a href="author-profile.html"><span>گرافیک تندر سرخ</span></a> پیشنهاد
-                                    <a href="item-v1.html"><span>لایه های 3D - وب پیکر نما</span></a>
-                                </p>
-                                <p class="timestamp">8 روز قبل</p>
-                                <span class="notification-type primary-new icon-bubble"></span>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                            <!-- DROPDOWN ITEM -->
-                            <li class="dropdown-item">
-                                <a href="author-profile.html">
-                                    <figure class="user-avatar">
-                                        <img src="images/avatars/avatar_05.jpg" alt="">
-                                    </figure>
-                                </a>
-                                <p class="title">
-                                    <a href="author-profile.html"><span>دا بیباپ</span></a> خریداری شده
-                                    <a href="item-v1.html"><span>Miniverse - تصویر قهرمان آهنگ ساز</span></a>
-                                </p>
-                                <p class="timestamp">یک هفته قبل</p>
-                                <span class="notification-type icon-tag"></span>
-                                <a href="dashboard-notifications.html" class="button primary">نمایش همه اعلانها</a>
-                            </li>
-                            <!-- /DROPDOWN ITEM -->
-                        </ul>
-                        <!-- /DROPDOWN NOTIFICATIONS -->
-                    </div>
-                </div>
-                <!-- /ACCOUNT INFORMATION -->
-                <!-- ACCOUNT ACTIONS -->
-                <div class="account-actions">
-                    <a href="#" class="button primary">تبدیل شدن به یک فروشنده</a>
-                    <a href="#" class="button secondary">خروج از سیستم</a>
-                </div>
-                <!-- /ACCOUNT ACTIONS -->
+                        </ul> <!-- /DROPDOWN -->
+                    }
+                    else
+                    {
+                        <p class="user-board"> <a href="/Login">ورود / </a> <a href="/Register">عضویت</a> </p>
+                    }
+                </div>                
+    <!-- /USER QUICKVIEW -->
             </div>
             <!-- /USER BOARD -->
         </header>

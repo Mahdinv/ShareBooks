@@ -45,5 +45,7 @@ namespace ShareBooks.Core.Services.Interfaces
 
         bool CompareOldPassword(string email, string oldPassword);
         void ChangeUserPassword(string email, string newPassword);
+
+        SideBarAdminPanelViewModel GetSideBarAdminPanelData(string email); //GetDeleteUsers
     }
 }
